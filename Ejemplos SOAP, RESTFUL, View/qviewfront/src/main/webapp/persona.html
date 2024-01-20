@@ -1,0 +1,96 @@
+
+<nav class="navbar bg-body-tertiary">
+  <div class="container-fluid d-flex align-items-end flex-column">
+    <form class="d-flex" role="search">
+      <a class="btn btn-primary m-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="#">
+        Agregar
+      </a>
+    </form>
+  </div>
+</nav>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col">
+      <div class="row">
+        <input ng-change="buscar()" ng-model="cedula" class="form-control mb-5" type="search" placeholder="Cedula...." aria-label="Search">
+      </div>
+      <div class="row align-items-center">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Cedula</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Apellido</th>
+              <th scope="col">Correo</th>
+              <th scope="col">Activo</th>
+              <th scope="col">Editar</th>
+              <th scope="col">Eliminar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="per in personas">
+              <th scope="row">{{per.cedula}}</th>
+              <td>{{per.nombre}}</td>
+              <td>{{per.apellido}}</td>
+              <td>{{per.correo}}</td>
+              <td>{{per.estado}}</td>
+              <td>
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop" ng-click="editar(per)">Editar</button>
+              </td>
+              <td>
+                <button type="button" class="btn btn-warning" ng-click="eliminar(per.idpersona)">Eliminar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Persona</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form name="form" ng-submit="actualizar_guardar(form)">
+  
+          <input id="id" name="id" ng-model="id" type="hidden">
+   
+          <div class="mb-3">
+            <label for="cedula" class="form-label">Cedula</label>
+            <input class="form-control" id="cedula" name="cedula" ng-model="cedula" type="text" maxlength="10" placeholder="Ingrese la cedula" aria-label="default input example">
+          </div>
+          <div class="mb-3">
+            <label for="nombre" class="form-label">Nombres</label>
+            <input class="form-control" id="nombre" name="nombre" ng-model="nombre" type="text" placeholder="Ingrese los nombres" aria-label="default input example">
+          </div>
+          <div class="mb-3">
+            <label for="apellido" class="form-label">Apellidos</label>
+            <input class="form-control" id="apellido" name="apellido" ng-model="apellido" type="text" placeholder="Ingrese los apellidos" aria-label="default input example">
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Correo</label>
+            <input type="email" class="form-control" name="email" id="email" ng-model="email" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="activo" name="activo" ng-model="activo">
+            <label class="form-check-label" for="activo">Activo</label>
+          </div>
+          <button class="btn btn-primary" data-bs-dismiss="modal" type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
