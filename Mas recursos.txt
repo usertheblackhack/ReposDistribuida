@@ -1,4 +1,0 @@
-En este link se encuentran recursos como el JDK, Paya y SOAPUI debido
-que no se podian seubir directamente por el peso.
-
-https://drive.google.com/drive/folders/1GO6MccCbCExUFUtgJ93UTApuZmbWrF0t?usp=drive_link
